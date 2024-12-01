@@ -14,7 +14,7 @@ for line in file.readlines():
 total = 0
 
 while heap1:
-    total += abs(heapq.heappop(heap1)- heapq.heappop(heap2))
+    total += abs(heapq.heappop(heap1) - heapq.heappop(heap2))
 
 
 print(total)
