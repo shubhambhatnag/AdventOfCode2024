@@ -1,6 +1,4 @@
 import heapq
-import os
-
 
 file = open("day1/input.txt","r")
 
