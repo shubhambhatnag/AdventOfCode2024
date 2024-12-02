@@ -1,5 +1,3 @@
-import heapq
-import os
 from collections import defaultdict
 
 file = open("day1/input.txt","r")
