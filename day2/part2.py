@@ -1,50 +1,21 @@
-file = open("day2/input.txt","r")
+import heapq
 
-safe = 0
+file = open("day1/input.txt","r")
 
-def check_valid(line):
-
-    increasing = None
-
-    valid = True
-
-    for i in range(len(line) - 1):
-        if line[i] < line[i+1]:
-            if increasing == None:
-                increasing = True
-            elif increasing == False:
-                valid = False
-                break
-
-            if not ((line[i+1] - line[i]) >= 1 and (line[i+1] - line[i]) <= 3):
-                valid = False
-                break
-
-
-        else:
-            if increasing == None:
-                increasing = False
-            elif increasing == True:
-                valid = False
-                break
-
-            if not ((line[i] - line[i+1]) >= 1 and (line[i] - line[i+1]) <= 3):
-                valid = False
-                break
-
-    return valid
-
+heap1 = []
+heap2 = []
 for line in file.readlines():
-    line = [int(num) for num in line.rstrip().split(" ")]
-    
+    line = line.rstrip().split("   ")
+    heapq.heappush(heap1,int(line[0]))
+    heapq.heappush(heap2,int(line[1]))
 
-    for i in range(len(line)):
-        if check_valid(line[:i] + line[i + 1:]):
-            safe += 1
-            break
+total = 0
 
-print(safe)
+while heap1:
+    total += abs(heapq.heappop(heap1) - heapq.heappop(heap2))
 
+
+print(total)
 
 
     
