@@ -45,7 +45,6 @@ for line in file.readlines():
     else:
         
         line = line.split(",")
-        cnt = 0
         if (not is_valid(line)):
             
             while not is_valid(line):
