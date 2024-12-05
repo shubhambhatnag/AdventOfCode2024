@@ -52,6 +52,11 @@ for line in file.readlines():
              
                 found = set()
                 
+                loc_dict = {}
+
+                for page in range(len(line)):
+                    loc_dict[line[page]] = page
+
                 total_set = set(line)
                 
                 swap = False
@@ -61,7 +66,7 @@ for line in file.readlines():
                     for pre_page in prereq[line[page]]:
                         
                         if pre_page in total_set and pre_page not in found:
-                            line[line.index(pre_page)], line[page] = line[page], line[line.index(pre_page)]
+                            line[loc_dict[pre_page]], line[page] = line[page], line[loc_dict[pre_page]]
                             swap = True
                             break
                     else:
