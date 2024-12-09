@@ -1,45 +1,23 @@
 import heapq
+import os
 
-file = open("day2/input.txt","r")
 
-safe = 0
+file = open("day1/input.txt","r")
 
+heap1 = []
+heap2 = []
 for line in file.readlines():
-    line = [int(num) for num in line.rstrip().split(" ")]
-    
+    line = line.rstrip().split("   ")
+    heapq.heappush(heap1,int(line[0]))
+    heapq.heappush(heap2,int(line[1]))
 
-    increasing = None
+total = 0
 
-    valid = True
-    for i in range(len(line) - 1):
-        if line[i] < line[i+1]:
-            if increasing == None:
-                increasing = True
-            elif increasing == False:
-                valid = False
-                break
-
-            if not ((line[i+1] - line[i]) >= 1 and (line[i+1] - line[i]) <= 3):
-                valid = False
-                break
+while heap1:
+    total += abs(heapq.heappop(heap1)- heapq.heappop(heap2))
 
 
-        else:
-            if increasing == None:
-                increasing = False
-            elif increasing == True:
-                valid = False
-                break
-
-            if not ((line[i] - line[i+1]) >= 1 and (line[i] - line[i+1]) <= 3):
-                valid = False
-                break
-
-    if valid:
-        safe += 1
-
-print(safe)
-
+print(total)
 
 
     
