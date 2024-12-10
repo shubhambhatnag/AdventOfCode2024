@@ -51,10 +51,6 @@ while rightmost >= 0:
     
     rightmost -= 1
 
-    
-
-
-    
 
 
 checksum = 0
